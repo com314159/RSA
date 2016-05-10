@@ -54,7 +54,7 @@
 #endif
 
 #if defined(MBEDTLS_SHA256_C)
-#include "mbedtls/sha256.h"
+#include "sha256.h"
 #endif
 
 #if defined(MBEDTLS_SHA512_C)

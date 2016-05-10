@@ -886,7 +886,7 @@
  *
  * Uncomment to enable the smaller implementation of SHA256.
  */
-//#define MBEDTLS_SHA256_SMALLER
+#define MBEDTLS_SHA256_SMALLER
 
 /**
  * \def MBEDTLS_SSL_AEAD_RANDOM_IV
@@ -2154,7 +2154,7 @@
  * This module adds support for SHA-224 and SHA-256.
  * This module is required for the SSL/TLS 1.2 PRF function.
  */
-//#define MBEDTLS_SHA256_C
+#define MBEDTLS_SHA256_C
 
 /**
  * \def MBEDTLS_SHA512_C
