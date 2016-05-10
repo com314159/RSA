@@ -13,4 +13,6 @@
 
 void testprint();
 
+void generateKeys();
+
 #endif /* rsa_test_h */
