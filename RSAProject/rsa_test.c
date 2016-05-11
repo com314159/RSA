@@ -16,12 +16,74 @@
 {
     printf("测试生成key\n");
     
-    initPubKey();
+    pubEn();
+    
 }
 
 
 #define KEY_SIZE   2048
 #define EXPONENT   65537
+
+
+
+void getRsaKeys(mbedtls_rsa_context *pubRsa, mbedtls_rsa_context *priRsa) {
+    char *pub_file = "/Users/gzc/Work/temp/pub.txt";
+    char *prv_file = "/Users/gzc/Work/temp/private.txt";
+    
+    
+    mbedtls_pk_context pub, prv;
+    
+    mbedtls_pk_init( &pub );
+    mbedtls_pk_init( &prv );
+    
+    
+    if ( mbedtls_pk_parse_public_keyfile( &pub, pub_file ) == 0 ) {
+        printf("成功\n");
+    }
+    if ( mbedtls_pk_parse_keyfile( &prv, prv_file, NULL ) == 0 ) {
+        printf("成功\n");
+    }
+    
+    *pubRsa = *mbedtls_pk_rsa(pub);
+    *priRsa = *mbedtls_pk_rsa(prv);
+    
+}
+
+
+void pubEn() {
+    
+    mbedtls_rsa_context pubRsa,priRsa;
+    
+    getRsaKeys(&pubRsa,&priRsa);
+    
+    if (mbedtls_rsa_check_pub_priv(&pubRsa, &priRsa) == 0) {
+        printf("获取成功\n");
+    }
+    
+    
+    unsigned char msg[] = "hello 你好";
+    unsigned char output[1000];
+    unsigned char outputPri[1000];
+    
+    memset(output, 0x00, 1000);
+    memset(outputPri, 0x00, 1000);
+    
+//    mbedtls_rsa_public(&pubRsa, msg, output);
+//    mbedtls_rsa_private(&priRsa, NULL, NULL, output, outputPri);
+    
+    mbedtls_rsa_private(&priRsa, NULL, NULL, msg, output);
+    mbedtls_rsa_public(&pubRsa, output, outputPri);
+    
+    
+    printf("\n最后加密后\n%s\n",outputPri);
+    
+    
+    
+}
+
+void privateEn() {
+    
+}
 
 void initPubKey() {
     
@@ -46,6 +108,9 @@ void initPubKey() {
         printf("成功\n");
     }
     
+    if ( mbedtls_rsa_check_pub_priv(mbedtls_pk_rsa(pub), mbedtls_pk_rsa(prv)) == 0) {
+        printf("检测rsa key成功]\n");
+    }
     
     mbedtls_pk_free( &pub );
     mbedtls_pk_free( &prv );

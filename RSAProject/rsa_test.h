@@ -17,6 +17,8 @@ void generateRSAKeys();
 
 void initPubKey();
 
+void pubEn() ;
+
 typedef struct
 {
     uint32_t key[16];
