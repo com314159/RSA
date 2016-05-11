@@ -101,6 +101,7 @@
 		2DB8872B1CE3320C00AAB12D /* cipher_wrap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cipher_wrap.c; sourceTree = "<group>"; };
 		2DB8872D1CE3321C00AAB12D /* cipher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cipher.h; sourceTree = "<group>"; };
 		2DB8872E1CE3322500AAB12D /* cipher_internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cipher_internal.h; sourceTree = "<group>"; };
+		2DB8872F1CE348F800AAB12D /* rsa_keys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rsa_keys.h; sourceTree = "<group>"; };
 		2DBE9E9A1CE08EB200192D14 /* RSAProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RSAProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBE9E9D1CE08EB200192D14 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2DBE9EA41CE08F1E00192D14 /* rsa_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rsa_test.c; sourceTree = "<group>"; };
@@ -240,6 +241,7 @@
 				2DBE9E9D1CE08EB200192D14 /* main.m */,
 				2DBE9EA41CE08F1E00192D14 /* rsa_test.c */,
 				2DBE9EA51CE08F1E00192D14 /* rsa_test.h */,
+				2DB8872F1CE348F800AAB12D /* rsa_keys.h */,
 			);
 			path = RSAProject;
 			sourceTree = "<group>";

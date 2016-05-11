@@ -16,7 +16,7 @@
 {
     printf("测试生成key\n");
     
-    generateRSAKeys();
+    initPubKey();
 }
 
 
@@ -25,8 +25,8 @@
 
 void initPubKey() {
     
-    char *pub_file = "/Users/gzc/Work/temp/rsa_pub.txt";
-    char *prv_file = "/Users/gzc/Work/temp/rsa_priv.txt";
+    char *pub_file = "/Users/gzc/Work/temp/pub.txt";
+    char *prv_file = "/Users/gzc/Work/temp/private.txt";
     int ret;
     
     mbedtls_pk_context pub, prv, alt;
@@ -36,14 +36,14 @@ void initPubKey() {
     mbedtls_pk_init( &alt );
     
     if ( mbedtls_pk_parse_public_keyfile( &pub, pub_file ) == 0 ) {
-        printf("成功");
+        printf("成功\n");
     }
     if ( mbedtls_pk_parse_keyfile( &prv, prv_file, NULL ) == 0 ) {
-        printf("成功");
+        printf("成功\n");
     }
     
     if ( mbedtls_pk_check_pair( &pub, &prv ) == ret ) {
-        printf("成功");
+        printf("成功\n");
     }
     
     
