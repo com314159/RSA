@@ -24,6 +24,8 @@
 		2DB8870F1CE30EAE00AAB12D /* pk_wrap.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB8870E1CE30EAE00AAB12D /* pk_wrap.c */; };
 		2DB887111CE3100B00AAB12D /* pkparse.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB887101CE3100B00AAB12D /* pkparse.c */; };
 		2DB887131CE3118D00AAB12D /* oid.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB887121CE3118D00AAB12D /* oid.c */; };
+		2DB887171CE31B8400AAB12D /* pkwrite.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB887161CE31B8400AAB12D /* pkwrite.c */; };
+		2DB887191CE31BEA00AAB12D /* asn1write.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB887181CE31BEA00AAB12D /* asn1write.c */; };
 		2DBE9E9E1CE08EB200192D14 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE9E9D1CE08EB200192D14 /* main.m */; };
 		2DBE9EA61CE08F1E00192D14 /* rsa_test.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE9EA41CE08F1E00192D14 /* rsa_test.c */; };
 /* End PBXBuildFile section */
@@ -78,6 +80,9 @@
 		2DB887101CE3100B00AAB12D /* pkparse.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pkparse.c; sourceTree = "<group>"; };
 		2DB887121CE3118D00AAB12D /* oid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = oid.c; sourceTree = "<group>"; };
 		2DB887141CE3119F00AAB12D /* oid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = oid.h; sourceTree = "<group>"; };
+		2DB887161CE31B8400AAB12D /* pkwrite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pkwrite.c; sourceTree = "<group>"; };
+		2DB887181CE31BEA00AAB12D /* asn1write.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = asn1write.c; sourceTree = "<group>"; };
+		2DB8871A1CE31BF800AAB12D /* asn1write.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = asn1write.h; sourceTree = "<group>"; };
 		2DBE9E9A1CE08EB200192D14 /* RSAProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RSAProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBE9E9D1CE08EB200192D14 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2DBE9EA41CE08F1E00192D14 /* rsa_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rsa_test.c; sourceTree = "<group>"; };
@@ -98,6 +103,7 @@
 		2D0D23821CE1931C002523CA /* rsa */ = {
 			isa = PBXGroup;
 			children = (
+				2DB887151CE31B7700AAB12D /* writer */,
 				2DB887141CE3119F00AAB12D /* oid.h */,
 				2DB887121CE3118D00AAB12D /* oid.c */,
 				2DB887091CE30D6C00AAB12D /* parse */,
@@ -159,6 +165,16 @@
 				2DB8870B1CE30DAD00AAB12D /* pk.c */,
 			);
 			path = parse;
+			sourceTree = "<group>";
+		};
+		2DB887151CE31B7700AAB12D /* writer */ = {
+			isa = PBXGroup;
+			children = (
+				2DB8871A1CE31BF800AAB12D /* asn1write.h */,
+				2DB887181CE31BEA00AAB12D /* asn1write.c */,
+				2DB887161CE31B8400AAB12D /* pkwrite.c */,
+			);
+			path = writer;
 			sourceTree = "<group>";
 		};
 		2DBE9E911CE08EB200192D14 = {
@@ -248,6 +264,7 @@
 			files = (
 				2DB8870C1CE30DAD00AAB12D /* pk.c in Sources */,
 				2D0D23A91CE1CB75002523CA /* aesni.c in Sources */,
+				2DB887191CE31BEA00AAB12D /* asn1write.c in Sources */,
 				2D0D23851CE1931C002523CA /* rsa.c in Sources */,
 				2D0D23E81CE1D20C002523CA /* sha256.c in Sources */,
 				2D0D239E1CE1C807002523CA /* ctr_drbg.c in Sources */,
@@ -262,6 +279,7 @@
 				2DB887111CE3100B00AAB12D /* pkparse.c in Sources */,
 				2D0D23901CE1B7BD002523CA /* asn1parse.c in Sources */,
 				2DB8870F1CE30EAE00AAB12D /* pk_wrap.c in Sources */,
+				2DB887171CE31B8400AAB12D /* pkwrite.c in Sources */,
 				2D0D23DF1CE1CFA0002523CA /* entropy_poll.c in Sources */,
 				2D0D23981CE1C1ED002523CA /* md_wrap.c in Sources */,
 				2D0D23E01CE1CFA0002523CA /* entropy.c in Sources */,

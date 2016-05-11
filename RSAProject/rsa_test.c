@@ -10,28 +10,48 @@
 #include "rsa.h"
 #include "ctr_drbg.h"
 #include "entropy.h"
+#include "pk.h"
 
  void testprint()
 {
     printf("测试生成key\n");
     
-    
-    
-    char c = 'c';
-    
-    char s[] = "hello";
-    
-    printf("c is :%s\n",s);
+    initPubKey();
 }
 
 
 #define KEY_SIZE   2048
 #define EXPONENT   65537
 
-void pubEncrpt() {
+void initPubKey() {
+    
+    char *pub_file = "/Users/gzc/Work/temp/rsa_pub.txt";
+    char *prv_file = "/Users/gzc/Work/temp/rsa_priv.txt";
+    int ret;
+    
+    mbedtls_pk_context pub, prv, alt;
+    
+    mbedtls_pk_init( &pub );
+    mbedtls_pk_init( &prv );
+    mbedtls_pk_init( &alt );
+    
+    if ( mbedtls_pk_parse_public_keyfile( &pub, pub_file ) == 0 ) {
+        printf("成功");
+    }
+    if ( mbedtls_pk_parse_keyfile( &prv, prv_file, NULL ) == 0 ) {
+        printf("成功");
+    }
+    
+    if ( mbedtls_pk_check_pair( &pub, &prv ) == ret ) {
+        printf("成功");
+    }
     
     
+    mbedtls_pk_free( &pub );
+    mbedtls_pk_free( &prv );
+    mbedtls_pk_free( &alt );
 }
+
 
 
 void generateRSAKeys() {

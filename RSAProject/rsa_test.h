@@ -15,6 +15,7 @@ void testprint();
 
 void generateRSAKeys();
 
+void initPubKey();
 
 typedef struct
 {
