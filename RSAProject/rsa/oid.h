@@ -30,6 +30,7 @@
 #endif
 
 #include "asn1.h"
+#include "pk.h"
 
 #include <stddef.h>
 
@@ -421,11 +422,87 @@ int mbedtls_oid_get_x509_ext_type( const mbedtls_asn1_buf *oid, int *ext_type );
  */
 int mbedtls_oid_get_attr_short_name( const mbedtls_asn1_buf *oid, const char **short_name );
 
-#if defined(MBEDTLS_ECP_C)
+/**
+ * \brief          Translate PublicKeyAlgorithm OID into pk_type
+ *
+ * \param oid      OID to use
+ * \param pk_alg   place to store public key algorithm
+ *
+ * \return         0 if successful, or MBEDTLS_ERR_OID_NOT_FOUND
+ */
+int mbedtls_oid_get_pk_alg( const mbedtls_asn1_buf *oid, mbedtls_pk_type_t *pk_alg );
 
+/**
+ * \brief          Translate pk_type into PublicKeyAlgorithm OID
+ *
+ * \param pk_alg   Public key type to look for
+ * \param oid      place to store ASN.1 OID string pointer
+ * \param olen     length of the OID
+ *
+ * \return         0 if successful, or MBEDTLS_ERR_OID_NOT_FOUND
+ */
+int mbedtls_oid_get_oid_by_pk_alg( mbedtls_pk_type_t pk_alg,
+                           const char **oid, size_t *olen );
+
+#if defined(MBEDTLS_ECP_C)
+/**
+ * \brief          Translate NamedCurve OID into an EC group identifier
+ *
+ * \param oid      OID to use
+ * \param grp_id   place to store group id
+ *
+ * \return         0 if successful, or MBEDTLS_ERR_OID_NOT_FOUND
+ */
+int mbedtls_oid_get_ec_grp( const mbedtls_asn1_buf *oid, mbedtls_ecp_group_id *grp_id );
+
+/**
+ * \brief          Translate EC group identifier into NamedCurve OID
+ *
+ * \param grp_id   EC group identifier
+ * \param oid      place to store ASN.1 OID string pointer
+ * \param olen     length of the OID
+ *
+ * \return         0 if successful, or MBEDTLS_ERR_OID_NOT_FOUND
+ */
+int mbedtls_oid_get_oid_by_ec_grp( mbedtls_ecp_group_id grp_id,
+                           const char **oid, size_t *olen );
 #endif /* MBEDTLS_ECP_C */
 
 #if defined(MBEDTLS_MD_C)
+/**
+ * \brief          Translate SignatureAlgorithm OID into md_type and pk_type
+ *
+ * \param oid      OID to use
+ * \param md_alg   place to store message digest algorithm
+ * \param pk_alg   place to store public key algorithm
+ *
+ * \return         0 if successful, or MBEDTLS_ERR_OID_NOT_FOUND
+ */
+int mbedtls_oid_get_sig_alg( const mbedtls_asn1_buf *oid,
+                     mbedtls_md_type_t *md_alg, mbedtls_pk_type_t *pk_alg );
+
+/**
+ * \brief          Translate SignatureAlgorithm OID into description
+ *
+ * \param oid      OID to use
+ * \param desc     place to store string pointer
+ *
+ * \return         0 if successful, or MBEDTLS_ERR_OID_NOT_FOUND
+ */
+int mbedtls_oid_get_sig_alg_desc( const mbedtls_asn1_buf *oid, const char **desc );
+
+/**
+ * \brief          Translate md_type and pk_type into SignatureAlgorithm OID
+ *
+ * \param md_alg   message digest algorithm
+ * \param pk_alg   public key algorithm
+ * \param oid      place to store ASN.1 OID string pointer
+ * \param olen     length of the OID
+ *
+ * \return         0 if successful, or MBEDTLS_ERR_OID_NOT_FOUND
+ */
+int mbedtls_oid_get_oid_by_sig_alg( mbedtls_pk_type_t pk_alg, mbedtls_md_type_t md_alg,
+                            const char **oid, size_t *olen );
 
 /**
  * \brief          Translate hash algorithm OID into md_type
@@ -472,7 +549,18 @@ int mbedtls_oid_get_cipher_alg( const mbedtls_asn1_buf *oid, mbedtls_cipher_type
 #endif /* MBEDTLS_CIPHER_C */
 
 #if defined(MBEDTLS_PKCS12_C)
-
+/**
+ * \brief          Translate PKCS#12 PBE algorithm OID into md_type and
+ *                 cipher_type
+ *
+ * \param oid           OID to use
+ * \param md_alg        place to store message digest algorithm
+ * \param cipher_alg    place to store cipher algorithm
+ *
+ * \return         0 if successful, or MBEDTLS_ERR_OID_NOT_FOUND
+ */
+int mbedtls_oid_get_pkcs12_pbe_alg( const mbedtls_asn1_buf *oid, mbedtls_md_type_t *md_alg,
+                            mbedtls_cipher_type_t *cipher_alg );
 #endif /* MBEDTLS_PKCS12_C */
 
 #ifdef __cplusplus

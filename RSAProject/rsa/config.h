@@ -1967,7 +1967,7 @@
  *
  * This modules adds support for decoding / parsing PEM files.
  */
-#define MBEDTLS_PEM_PARSE_C
+//#define MBEDTLS_PEM_PARSE_C
 
 /**
  * \def MBEDTLS_PEM_WRITE_C
@@ -2041,7 +2041,7 @@
  *
  * This module adds support for the PKCS#5 functions.
  */
-#define MBEDTLS_PKCS5_C
+//#define MBEDTLS_PKCS5_C
 
 /**
  * \def MBEDTLS_PKCS11_C
@@ -2072,7 +2072,7 @@
  *
  * This module enables PKCS#12 functions.
  */
-#define MBEDTLS_PKCS12_C
+//#define MBEDTLS_PKCS12_C
 
 /**
  * \def MBEDTLS_PLATFORM_C

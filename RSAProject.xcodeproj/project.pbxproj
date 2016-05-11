@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2D0D23851CE1931C002523CA /* rsa.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D0D23831CE1931C002523CA /* rsa.c */; };
-		2D0D238D1CE1B624002523CA /* oid.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D0D238C1CE1B624002523CA /* oid.c */; };
 		2D0D23901CE1B7BD002523CA /* asn1parse.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D0D238F1CE1B7BD002523CA /* asn1parse.c */; };
 		2D0D23951CE1C05E002523CA /* md.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D0D23941CE1C05E002523CA /* md.c */; };
 		2D0D23981CE1C1ED002523CA /* md_wrap.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D0D23971CE1C1ED002523CA /* md_wrap.c */; };
@@ -23,6 +22,8 @@
 		2D0D23E81CE1D20C002523CA /* sha256.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D0D23E71CE1D20C002523CA /* sha256.c */; };
 		2DB8870C1CE30DAD00AAB12D /* pk.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB8870B1CE30DAD00AAB12D /* pk.c */; };
 		2DB8870F1CE30EAE00AAB12D /* pk_wrap.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB8870E1CE30EAE00AAB12D /* pk_wrap.c */; };
+		2DB887111CE3100B00AAB12D /* pkparse.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB887101CE3100B00AAB12D /* pkparse.c */; };
+		2DB887131CE3118D00AAB12D /* oid.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB887121CE3118D00AAB12D /* oid.c */; };
 		2DBE9E9E1CE08EB200192D14 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE9E9D1CE08EB200192D14 /* main.m */; };
 		2DBE9EA61CE08F1E00192D14 /* rsa_test.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE9EA41CE08F1E00192D14 /* rsa_test.c */; };
 /* End PBXBuildFile section */
@@ -47,8 +48,6 @@
 		2D0D23881CE1B42F002523CA /* bignum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bignum.h; sourceTree = "<group>"; };
 		2D0D23891CE1B47A002523CA /* threading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = threading.h; sourceTree = "<group>"; };
 		2D0D238A1CE1B59B002523CA /* md.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md.h; sourceTree = "<group>"; };
-		2D0D238B1CE1B624002523CA /* oid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = oid.h; sourceTree = "<group>"; };
-		2D0D238C1CE1B624002523CA /* oid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = oid.c; sourceTree = "<group>"; };
 		2D0D238E1CE1B751002523CA /* asn1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1.h; sourceTree = "<group>"; };
 		2D0D238F1CE1B7BD002523CA /* asn1parse.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = asn1parse.c; sourceTree = "<group>"; };
 		2D0D23941CE1C05E002523CA /* md.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md.c; sourceTree = "<group>"; };
@@ -76,6 +75,9 @@
 		2DB8870B1CE30DAD00AAB12D /* pk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pk.c; sourceTree = "<group>"; };
 		2DB8870D1CE30E8300AAB12D /* pk_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pk_internal.h; sourceTree = "<group>"; };
 		2DB8870E1CE30EAE00AAB12D /* pk_wrap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pk_wrap.c; sourceTree = "<group>"; };
+		2DB887101CE3100B00AAB12D /* pkparse.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pkparse.c; sourceTree = "<group>"; };
+		2DB887121CE3118D00AAB12D /* oid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = oid.c; sourceTree = "<group>"; };
+		2DB887141CE3119F00AAB12D /* oid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = oid.h; sourceTree = "<group>"; };
 		2DBE9E9A1CE08EB200192D14 /* RSAProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RSAProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBE9E9D1CE08EB200192D14 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2DBE9EA41CE08F1E00192D14 /* rsa_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rsa_test.c; sourceTree = "<group>"; };
@@ -96,6 +98,8 @@
 		2D0D23821CE1931C002523CA /* rsa */ = {
 			isa = PBXGroup;
 			children = (
+				2DB887141CE3119F00AAB12D /* oid.h */,
+				2DB887121CE3118D00AAB12D /* oid.c */,
 				2DB887091CE30D6C00AAB12D /* parse */,
 				2D0D23E51CE1D04E002523CA /* timing.h */,
 				2D0D23E31CE1D039002523CA /* timing.c */,
@@ -111,9 +115,7 @@
 				2D0D23961CE1C115002523CA /* md_internal.h */,
 				2D0D238F1CE1B7BD002523CA /* asn1parse.c */,
 				2D0D238E1CE1B751002523CA /* asn1.h */,
-				2D0D238B1CE1B624002523CA /* oid.h */,
 				2D0D23941CE1C05E002523CA /* md.c */,
-				2D0D238C1CE1B624002523CA /* oid.c */,
 				2D0D238A1CE1B59B002523CA /* md.h */,
 				2D0D23891CE1B47A002523CA /* threading.h */,
 				2D0D23881CE1B42F002523CA /* bignum.h */,
@@ -150,6 +152,7 @@
 		2DB887091CE30D6C00AAB12D /* parse */ = {
 			isa = PBXGroup;
 			children = (
+				2DB887101CE3100B00AAB12D /* pkparse.c */,
 				2DB8870D1CE30E8300AAB12D /* pk_internal.h */,
 				2DB8870E1CE30EAE00AAB12D /* pk_wrap.c */,
 				2DB8870A1CE30D8B00AAB12D /* pk.h */,
@@ -250,12 +253,13 @@
 				2D0D239E1CE1C807002523CA /* ctr_drbg.c in Sources */,
 				2DBE9EA61CE08F1E00192D14 /* rsa_test.c in Sources */,
 				2D0D23A31CE1CA29002523CA /* aes.c in Sources */,
-				2D0D238D1CE1B624002523CA /* oid.c in Sources */,
 				2D0D239A1CE1C2A4002523CA /* bignum.c in Sources */,
 				2D0D23A61CE1CB37002523CA /* padlock.c in Sources */,
+				2DB887131CE3118D00AAB12D /* oid.c in Sources */,
 				2DBE9E9E1CE08EB200192D14 /* main.m in Sources */,
 				2D0D23E41CE1D039002523CA /* timing.c in Sources */,
 				2D0D23951CE1C05E002523CA /* md.c in Sources */,
+				2DB887111CE3100B00AAB12D /* pkparse.c in Sources */,
 				2D0D23901CE1B7BD002523CA /* asn1parse.c in Sources */,
 				2DB8870F1CE30EAE00AAB12D /* pk_wrap.c in Sources */,
 				2D0D23DF1CE1CFA0002523CA /* entropy_poll.c in Sources */,

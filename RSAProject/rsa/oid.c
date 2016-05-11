@@ -302,6 +302,187 @@ FN_OID_TYPED_FROM_ASN1(mbedtls_oid_descriptor_t, ext_key_usage, oid_ext_key_usag
 FN_OID_GET_ATTR1(mbedtls_oid_get_extended_key_usage, mbedtls_oid_descriptor_t, ext_key_usage, const char *, description)
 #endif /* MBEDTLS_X509_USE_C || MBEDTLS_X509_CREATE_C */
 
+#if defined(MBEDTLS_MD_C)
+/*
+ * For SignatureAlgorithmIdentifier
+ */
+typedef struct {
+    mbedtls_oid_descriptor_t    descriptor;
+    mbedtls_md_type_t           md_alg;
+    mbedtls_pk_type_t           pk_alg;
+} oid_sig_alg_t;
+
+static const oid_sig_alg_t oid_sig_alg[] =
+{
+    {
+        { ADD_LEN( MBEDTLS_OID_PKCS1_MD2 ),        "md2WithRSAEncryption",     "RSA with MD2" },
+        MBEDTLS_MD_MD2,      MBEDTLS_PK_RSA,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_PKCS1_MD4 ),        "md4WithRSAEncryption",     "RSA with MD4" },
+        MBEDTLS_MD_MD4,      MBEDTLS_PK_RSA,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_PKCS1_MD5 ),        "md5WithRSAEncryption",     "RSA with MD5" },
+        MBEDTLS_MD_MD5,      MBEDTLS_PK_RSA,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_PKCS1_SHA1 ),       "sha-1WithRSAEncryption",   "RSA with SHA1" },
+        MBEDTLS_MD_SHA1,     MBEDTLS_PK_RSA,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_PKCS1_SHA224 ),     "sha224WithRSAEncryption",  "RSA with SHA-224" },
+        MBEDTLS_MD_SHA224,   MBEDTLS_PK_RSA,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_PKCS1_SHA256 ),     "sha256WithRSAEncryption",  "RSA with SHA-256" },
+        MBEDTLS_MD_SHA256,   MBEDTLS_PK_RSA,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_PKCS1_SHA384 ),     "sha384WithRSAEncryption",  "RSA with SHA-384" },
+        MBEDTLS_MD_SHA384,   MBEDTLS_PK_RSA,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_PKCS1_SHA512 ),     "sha512WithRSAEncryption",  "RSA with SHA-512" },
+        MBEDTLS_MD_SHA512,   MBEDTLS_PK_RSA,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_RSA_SHA_OBS ),      "sha-1WithRSAEncryption",   "RSA with SHA1" },
+        MBEDTLS_MD_SHA1,     MBEDTLS_PK_RSA,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_ECDSA_SHA1 ),       "ecdsa-with-SHA1",      "ECDSA with SHA1" },
+        MBEDTLS_MD_SHA1,     MBEDTLS_PK_ECDSA,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_ECDSA_SHA224 ),     "ecdsa-with-SHA224",    "ECDSA with SHA224" },
+        MBEDTLS_MD_SHA224,   MBEDTLS_PK_ECDSA,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_ECDSA_SHA256 ),     "ecdsa-with-SHA256",    "ECDSA with SHA256" },
+        MBEDTLS_MD_SHA256,   MBEDTLS_PK_ECDSA,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_ECDSA_SHA384 ),     "ecdsa-with-SHA384",    "ECDSA with SHA384" },
+        MBEDTLS_MD_SHA384,   MBEDTLS_PK_ECDSA,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_ECDSA_SHA512 ),     "ecdsa-with-SHA512",    "ECDSA with SHA512" },
+        MBEDTLS_MD_SHA512,   MBEDTLS_PK_ECDSA,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_RSASSA_PSS ),        "RSASSA-PSS",           "RSASSA-PSS" },
+        MBEDTLS_MD_NONE,     MBEDTLS_PK_RSASSA_PSS,
+    },
+    {
+        { NULL, 0, NULL, NULL },
+        MBEDTLS_MD_NONE, MBEDTLS_PK_NONE,
+    },
+};
+
+FN_OID_TYPED_FROM_ASN1(oid_sig_alg_t, sig_alg, oid_sig_alg)
+FN_OID_GET_DESCRIPTOR_ATTR1(mbedtls_oid_get_sig_alg_desc, oid_sig_alg_t, sig_alg, const char *, description)
+FN_OID_GET_ATTR2(mbedtls_oid_get_sig_alg, oid_sig_alg_t, sig_alg, mbedtls_md_type_t, md_alg, mbedtls_pk_type_t, pk_alg)
+FN_OID_GET_OID_BY_ATTR2(mbedtls_oid_get_oid_by_sig_alg, oid_sig_alg_t, oid_sig_alg, mbedtls_pk_type_t, pk_alg, mbedtls_md_type_t, md_alg)
+#endif /* MBEDTLS_MD_C */
+
+/*
+ * For PublicKeyInfo (PKCS1, RFC 5480)
+ */
+typedef struct {
+    mbedtls_oid_descriptor_t    descriptor;
+    mbedtls_pk_type_t           pk_alg;
+} oid_pk_alg_t;
+
+static const oid_pk_alg_t oid_pk_alg[] =
+{
+    {
+        { ADD_LEN( MBEDTLS_OID_PKCS1_RSA ),      "rsaEncryption",   "RSA" },
+        MBEDTLS_PK_RSA,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_EC_ALG_UNRESTRICTED ),  "id-ecPublicKey",   "Generic EC key" },
+        MBEDTLS_PK_ECKEY,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_EC_ALG_ECDH ),          "id-ecDH",          "EC key for ECDH" },
+        MBEDTLS_PK_ECKEY_DH,
+    },
+    {
+        { NULL, 0, NULL, NULL },
+        MBEDTLS_PK_NONE,
+    },
+};
+
+FN_OID_TYPED_FROM_ASN1(oid_pk_alg_t, pk_alg, oid_pk_alg)
+FN_OID_GET_ATTR1(mbedtls_oid_get_pk_alg, oid_pk_alg_t, pk_alg, mbedtls_pk_type_t, pk_alg)
+FN_OID_GET_OID_BY_ATTR1(mbedtls_oid_get_oid_by_pk_alg, oid_pk_alg_t, oid_pk_alg, mbedtls_pk_type_t, pk_alg)
+
+#if defined(MBEDTLS_ECP_C)
+/*
+ * For namedCurve (RFC 5480)
+ */
+typedef struct {
+    mbedtls_oid_descriptor_t    descriptor;
+    mbedtls_ecp_group_id        grp_id;
+} oid_ecp_grp_t;
+
+static const oid_ecp_grp_t oid_ecp_grp[] =
+{
+    {
+        { ADD_LEN( MBEDTLS_OID_EC_GRP_SECP192R1 ), "secp192r1",    "secp192r1" },
+        MBEDTLS_ECP_DP_SECP192R1,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_EC_GRP_SECP224R1 ), "secp224r1",    "secp224r1" },
+        MBEDTLS_ECP_DP_SECP224R1,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_EC_GRP_SECP256R1 ), "secp256r1",    "secp256r1" },
+        MBEDTLS_ECP_DP_SECP256R1,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_EC_GRP_SECP384R1 ), "secp384r1",    "secp384r1" },
+        MBEDTLS_ECP_DP_SECP384R1,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_EC_GRP_SECP521R1 ), "secp521r1",    "secp521r1" },
+        MBEDTLS_ECP_DP_SECP521R1,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_EC_GRP_SECP192K1 ), "secp192k1",    "secp192k1" },
+        MBEDTLS_ECP_DP_SECP192K1,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_EC_GRP_SECP224K1 ), "secp224k1",    "secp224k1" },
+        MBEDTLS_ECP_DP_SECP224K1,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_EC_GRP_SECP256K1 ), "secp256k1",    "secp256k1" },
+        MBEDTLS_ECP_DP_SECP256K1,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_EC_GRP_BP256R1 ),   "brainpoolP256r1","brainpool256r1" },
+        MBEDTLS_ECP_DP_BP256R1,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_EC_GRP_BP384R1 ),   "brainpoolP384r1","brainpool384r1" },
+        MBEDTLS_ECP_DP_BP384R1,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_EC_GRP_BP512R1 ),   "brainpoolP512r1","brainpool512r1" },
+        MBEDTLS_ECP_DP_BP512R1,
+    },
+    {
+        { NULL, 0, NULL, NULL },
+        MBEDTLS_ECP_DP_NONE,
+    },
+};
+
+FN_OID_TYPED_FROM_ASN1(oid_ecp_grp_t, grp_id, oid_ecp_grp)
+FN_OID_GET_ATTR1(mbedtls_oid_get_ec_grp, oid_ecp_grp_t, grp_id, mbedtls_ecp_group_id, grp_id)
+FN_OID_GET_OID_BY_ATTR1(mbedtls_oid_get_oid_by_ec_grp, oid_ecp_grp_t, oid_ecp_grp, mbedtls_ecp_group_id, grp_id)
+#endif /* MBEDTLS_ECP_C */
 
 #if defined(MBEDTLS_CIPHER_C)
 /*
@@ -387,7 +568,33 @@ FN_OID_GET_OID_BY_ATTR1(mbedtls_oid_get_oid_by_md, oid_md_alg_t, oid_md_alg, mbe
 #endif /* MBEDTLS_MD_C */
 
 #if defined(MBEDTLS_PKCS12_C)
+/*
+ * For PKCS#12 PBEs
+ */
+typedef struct {
+    mbedtls_oid_descriptor_t    descriptor;
+    mbedtls_md_type_t           md_alg;
+    mbedtls_cipher_type_t       cipher_alg;
+} oid_pkcs12_pbe_alg_t;
 
+static const oid_pkcs12_pbe_alg_t oid_pkcs12_pbe_alg[] =
+{
+    {
+        { ADD_LEN( MBEDTLS_OID_PKCS12_PBE_SHA1_DES3_EDE_CBC ), "pbeWithSHAAnd3-KeyTripleDES-CBC", "PBE with SHA1 and 3-Key 3DES" },
+        MBEDTLS_MD_SHA1,      MBEDTLS_CIPHER_DES_EDE3_CBC,
+    },
+    {
+        { ADD_LEN( MBEDTLS_OID_PKCS12_PBE_SHA1_DES2_EDE_CBC ), "pbeWithSHAAnd2-KeyTripleDES-CBC", "PBE with SHA1 and 2-Key 3DES" },
+        MBEDTLS_MD_SHA1,      MBEDTLS_CIPHER_DES_EDE_CBC,
+    },
+    {
+        { NULL, 0, NULL, NULL },
+        MBEDTLS_MD_NONE, MBEDTLS_CIPHER_NONE,
+    },
+};
+
+FN_OID_TYPED_FROM_ASN1(oid_pkcs12_pbe_alg_t, pkcs12_pbe_alg, oid_pkcs12_pbe_alg)
+FN_OID_GET_ATTR2(mbedtls_oid_get_pkcs12_pbe_alg, oid_pkcs12_pbe_alg_t, pkcs12_pbe_alg, mbedtls_md_type_t, md_alg, mbedtls_cipher_type_t, cipher_alg)
 #endif /* MBEDTLS_PKCS12_C */
 
 #define OID_SAFE_SNPRINTF                               \
