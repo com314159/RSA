@@ -26,6 +26,12 @@
 		2DB887131CE3118D00AAB12D /* oid.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB887121CE3118D00AAB12D /* oid.c */; };
 		2DB887171CE31B8400AAB12D /* pkwrite.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB887161CE31B8400AAB12D /* pkwrite.c */; };
 		2DB887191CE31BEA00AAB12D /* asn1write.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB887181CE31BEA00AAB12D /* asn1write.c */; };
+		2DB8871D1CE330EA00AAB12D /* pem.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB8871C1CE330EA00AAB12D /* pem.c */; };
+		2DB8871F1CE3311D00AAB12D /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB8871E1CE3311D00AAB12D /* base64.c */; };
+		2DB887241CE3316600AAB12D /* des.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB887231CE3316600AAB12D /* des.c */; };
+		2DB887271CE331C100AAB12D /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB887261CE331C100AAB12D /* md5.c */; };
+		2DB8872A1CE3320000AAB12D /* cipher.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB887291CE3320000AAB12D /* cipher.c */; };
+		2DB8872C1CE3320C00AAB12D /* cipher_wrap.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB8872B1CE3320C00AAB12D /* cipher_wrap.c */; };
 		2DBE9E9E1CE08EB200192D14 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE9E9D1CE08EB200192D14 /* main.m */; };
 		2DBE9EA61CE08F1E00192D14 /* rsa_test.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE9EA41CE08F1E00192D14 /* rsa_test.c */; };
 /* End PBXBuildFile section */
@@ -83,6 +89,18 @@
 		2DB887161CE31B8400AAB12D /* pkwrite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pkwrite.c; sourceTree = "<group>"; };
 		2DB887181CE31BEA00AAB12D /* asn1write.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = asn1write.c; sourceTree = "<group>"; };
 		2DB8871A1CE31BF800AAB12D /* asn1write.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = asn1write.h; sourceTree = "<group>"; };
+		2DB8871B1CE330DF00AAB12D /* pem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pem.h; sourceTree = "<group>"; };
+		2DB8871C1CE330EA00AAB12D /* pem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pem.c; sourceTree = "<group>"; };
+		2DB8871E1CE3311D00AAB12D /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
+		2DB887211CE3314000AAB12D /* base64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		2DB887221CE3315900AAB12D /* des.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = des.h; sourceTree = "<group>"; };
+		2DB887231CE3316600AAB12D /* des.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = des.c; sourceTree = "<group>"; };
+		2DB887261CE331C100AAB12D /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
+		2DB887281CE331CC00AAB12D /* md5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		2DB887291CE3320000AAB12D /* cipher.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cipher.c; sourceTree = "<group>"; };
+		2DB8872B1CE3320C00AAB12D /* cipher_wrap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cipher_wrap.c; sourceTree = "<group>"; };
+		2DB8872D1CE3321C00AAB12D /* cipher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cipher.h; sourceTree = "<group>"; };
+		2DB8872E1CE3322500AAB12D /* cipher_internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cipher_internal.h; sourceTree = "<group>"; };
 		2DBE9E9A1CE08EB200192D14 /* RSAProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RSAProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBE9E9D1CE08EB200192D14 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2DBE9EA41CE08F1E00192D14 /* rsa_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rsa_test.c; sourceTree = "<group>"; };
@@ -170,11 +188,30 @@
 		2DB887151CE31B7700AAB12D /* writer */ = {
 			isa = PBXGroup;
 			children = (
+				2DB8872D1CE3321C00AAB12D /* cipher.h */,
+				2DB8872E1CE3322500AAB12D /* cipher_internal.h */,
+				2DB8872B1CE3320C00AAB12D /* cipher_wrap.c */,
+				2DB887291CE3320000AAB12D /* cipher.c */,
+				2DB887231CE3316600AAB12D /* des.c */,
+				2DB887221CE3315900AAB12D /* des.h */,
+				2DB887211CE3314000AAB12D /* base64.h */,
+				2DB8871E1CE3311D00AAB12D /* base64.c */,
+				2DB8871C1CE330EA00AAB12D /* pem.c */,
+				2DB8871B1CE330DF00AAB12D /* pem.h */,
 				2DB8871A1CE31BF800AAB12D /* asn1write.h */,
 				2DB887181CE31BEA00AAB12D /* asn1write.c */,
 				2DB887161CE31B8400AAB12D /* pkwrite.c */,
 			);
 			path = writer;
+			sourceTree = "<group>";
+		};
+		2DB887251CE331B700AAB12D /* md5 */ = {
+			isa = PBXGroup;
+			children = (
+				2DB887281CE331CC00AAB12D /* md5.h */,
+				2DB887261CE331C100AAB12D /* md5.c */,
+			);
+			path = md5;
 			sourceTree = "<group>";
 		};
 		2DBE9E911CE08EB200192D14 = {
@@ -196,6 +233,7 @@
 		2DBE9E9C1CE08EB200192D14 /* RSAProject */ = {
 			isa = PBXGroup;
 			children = (
+				2DB887251CE331B700AAB12D /* md5 */,
 				2D0D23E61CE1D202002523CA /* sha */,
 				2D0D23A01CE1C9D7002523CA /* aes */,
 				2D0D23821CE1931C002523CA /* rsa */,
@@ -262,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DB8871D1CE330EA00AAB12D /* pem.c in Sources */,
 				2DB8870C1CE30DAD00AAB12D /* pk.c in Sources */,
 				2D0D23A91CE1CB75002523CA /* aesni.c in Sources */,
 				2DB887191CE31BEA00AAB12D /* asn1write.c in Sources */,
@@ -271,14 +310,19 @@
 				2DBE9EA61CE08F1E00192D14 /* rsa_test.c in Sources */,
 				2D0D23A31CE1CA29002523CA /* aes.c in Sources */,
 				2D0D239A1CE1C2A4002523CA /* bignum.c in Sources */,
+				2DB8872A1CE3320000AAB12D /* cipher.c in Sources */,
 				2D0D23A61CE1CB37002523CA /* padlock.c in Sources */,
 				2DB887131CE3118D00AAB12D /* oid.c in Sources */,
 				2DBE9E9E1CE08EB200192D14 /* main.m in Sources */,
 				2D0D23E41CE1D039002523CA /* timing.c in Sources */,
 				2D0D23951CE1C05E002523CA /* md.c in Sources */,
 				2DB887111CE3100B00AAB12D /* pkparse.c in Sources */,
+				2DB887271CE331C100AAB12D /* md5.c in Sources */,
 				2D0D23901CE1B7BD002523CA /* asn1parse.c in Sources */,
+				2DB8872C1CE3320C00AAB12D /* cipher_wrap.c in Sources */,
 				2DB8870F1CE30EAE00AAB12D /* pk_wrap.c in Sources */,
+				2DB887241CE3316600AAB12D /* des.c in Sources */,
+				2DB8871F1CE3311D00AAB12D /* base64.c in Sources */,
 				2DB887171CE31B8400AAB12D /* pkwrite.c in Sources */,
 				2D0D23DF1CE1CFA0002523CA /* entropy_poll.c in Sources */,
 				2D0D23981CE1C1ED002523CA /* md_wrap.c in Sources */,

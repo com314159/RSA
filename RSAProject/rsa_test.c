@@ -16,7 +16,7 @@
 {
     printf("测试生成key\n");
     
-    initPubKey();
+    generateRSAKeys();
 }
 
 
@@ -56,13 +56,22 @@ void initPubKey() {
 
 void generateRSAKeys() {
     
+    const char *privateKeyFile = "/Users/gzc/Work/temp/private.txt";
+    const char *pubKeyFile = "/Users/gzc/Work/temp/pub.txt";
+    
     int ret;
     mbedtls_rsa_context rsa;
     mbedtls_entropy_context entropy;
     mbedtls_ctr_drbg_context ctr_drbg;
     FILE *fpub  = NULL;
     FILE *fpriv = NULL;
+    
     const char *pers = "rsa_genkey_rsa_video_qqq";
+    
+    mbedtls_pk_context key;
+    mbedtls_pk_init(&key);
+    
+    mbedtls_pk_setup(&key, mbedtls_pk_info_from_type(MBEDTLS_PK_RSA));
     
     mbedtls_ctr_drbg_init( &ctr_drbg );
     
@@ -90,9 +99,15 @@ void generateRSAKeys() {
         goto exit;
     }
     
+    key.pk_ctx = &rsa;
+    
     printf( " ok\n  . Exporting the public  key in rsa_pub.txt...." );
     fflush( stdout );
     
+    write_private_key(&key, privateKeyFile);
+    write_pub_key(&key, pubKeyFile);
+    
+    fflush( stdout );
     if( ( fpub = fopen( "/Users/gzc/Work/temp/rsa_pub.txt", "wb+" ) ) == NULL )
     {
         printf( " failed\n  ! could not open rsa_pub.txt for writing\n\n" );
@@ -150,6 +165,59 @@ exit:
 #endif
     
     return   ;
+}
+
+int write_pub_key( mbedtls_pk_context *key, const char *output_file ) {
     
+    int ret;
+    FILE *f;
+    unsigned char output_buf[16000];
+    unsigned char *c = output_buf;
+    size_t len = 0;
     
+    if( ( ret = mbedtls_pk_write_pubkey_pem( key, output_buf, 16000 ) ) != 0 )
+        return( ret );
+    
+    len = strlen( (char *) output_buf );
+    
+    if( ( f = fopen( output_file, "wb" ) ) == NULL )
+        return( -1 );
+    
+    if( fwrite( c, 1, len, f ) != len )
+    {
+        fclose( f );
+        return( -1 );
+    }
+    
+    fclose( f );
+    
+    return 0;
+}
+
+
+ int write_private_key( mbedtls_pk_context *key, const char *output_file ) {
+    
+    int ret;
+    FILE *f;
+    unsigned char output_buf[16000];
+    unsigned char *c = output_buf;
+    size_t len = 0;
+    
+     if( ( ret = mbedtls_pk_write_key_pem( key, output_buf, 16000 ) ) != 0 )
+         return( ret );
+     
+     len = strlen( (char *) output_buf );
+    
+    if( ( f = fopen( output_file, "wb" ) ) == NULL )
+        return( -1 );
+    
+    if( fwrite( c, 1, len, f ) != len )
+    {
+        fclose( f );
+        return( -1 );
+    }
+    
+    fclose( f );
+    
+    return 0;
 }
