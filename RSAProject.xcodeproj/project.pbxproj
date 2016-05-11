@@ -21,6 +21,8 @@
 		2D0D23E01CE1CFA0002523CA /* entropy.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D0D23DE1CE1CFA0002523CA /* entropy.c */; };
 		2D0D23E41CE1D039002523CA /* timing.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D0D23E31CE1D039002523CA /* timing.c */; };
 		2D0D23E81CE1D20C002523CA /* sha256.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D0D23E71CE1D20C002523CA /* sha256.c */; };
+		2DB8870C1CE30DAD00AAB12D /* pk.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB8870B1CE30DAD00AAB12D /* pk.c */; };
+		2DB8870F1CE30EAE00AAB12D /* pk_wrap.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DB8870E1CE30EAE00AAB12D /* pk_wrap.c */; };
 		2DBE9E9E1CE08EB200192D14 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE9E9D1CE08EB200192D14 /* main.m */; };
 		2DBE9EA61CE08F1E00192D14 /* rsa_test.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE9EA41CE08F1E00192D14 /* rsa_test.c */; };
 /* End PBXBuildFile section */
@@ -70,6 +72,10 @@
 		2D0D23E51CE1D04E002523CA /* timing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timing.h; sourceTree = "<group>"; };
 		2D0D23E71CE1D20C002523CA /* sha256.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha256.c; sourceTree = "<group>"; };
 		2D0D23E91CE1D21E002523CA /* sha256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha256.h; sourceTree = "<group>"; };
+		2DB8870A1CE30D8B00AAB12D /* pk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pk.h; sourceTree = "<group>"; };
+		2DB8870B1CE30DAD00AAB12D /* pk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pk.c; sourceTree = "<group>"; };
+		2DB8870D1CE30E8300AAB12D /* pk_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pk_internal.h; sourceTree = "<group>"; };
+		2DB8870E1CE30EAE00AAB12D /* pk_wrap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pk_wrap.c; sourceTree = "<group>"; };
 		2DBE9E9A1CE08EB200192D14 /* RSAProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RSAProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBE9E9D1CE08EB200192D14 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2DBE9EA41CE08F1E00192D14 /* rsa_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rsa_test.c; sourceTree = "<group>"; };
@@ -90,6 +96,7 @@
 		2D0D23821CE1931C002523CA /* rsa */ = {
 			isa = PBXGroup;
 			children = (
+				2DB887091CE30D6C00AAB12D /* parse */,
 				2D0D23E51CE1D04E002523CA /* timing.h */,
 				2D0D23E31CE1D039002523CA /* timing.c */,
 				2D0D23DD1CE1CFA0002523CA /* entropy_poll.c */,
@@ -138,6 +145,17 @@
 				2D0D23E71CE1D20C002523CA /* sha256.c */,
 			);
 			path = sha;
+			sourceTree = "<group>";
+		};
+		2DB887091CE30D6C00AAB12D /* parse */ = {
+			isa = PBXGroup;
+			children = (
+				2DB8870D1CE30E8300AAB12D /* pk_internal.h */,
+				2DB8870E1CE30EAE00AAB12D /* pk_wrap.c */,
+				2DB8870A1CE30D8B00AAB12D /* pk.h */,
+				2DB8870B1CE30DAD00AAB12D /* pk.c */,
+			);
+			path = parse;
 			sourceTree = "<group>";
 		};
 		2DBE9E911CE08EB200192D14 = {
@@ -225,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DB8870C1CE30DAD00AAB12D /* pk.c in Sources */,
 				2D0D23A91CE1CB75002523CA /* aesni.c in Sources */,
 				2D0D23851CE1931C002523CA /* rsa.c in Sources */,
 				2D0D23E81CE1D20C002523CA /* sha256.c in Sources */,
@@ -238,6 +257,7 @@
 				2D0D23E41CE1D039002523CA /* timing.c in Sources */,
 				2D0D23951CE1C05E002523CA /* md.c in Sources */,
 				2D0D23901CE1B7BD002523CA /* asn1parse.c in Sources */,
+				2DB8870F1CE30EAE00AAB12D /* pk_wrap.c in Sources */,
 				2D0D23DF1CE1CFA0002523CA /* entropy_poll.c in Sources */,
 				2D0D23981CE1C1ED002523CA /* md_wrap.c in Sources */,
 				2D0D23E01CE1CFA0002523CA /* entropy.c in Sources */,

@@ -16,14 +16,22 @@
     printf("测试生成key\n");
     
     
-    generateRSAKeys();
-        
     
+    char c = 'c';
     
+    char s[] = "hello";
+    
+    printf("c is :%s\n",s);
 }
+
 
 #define KEY_SIZE   2048
 #define EXPONENT   65537
+
+void pubEncrpt() {
+    
+    
+}
 
 
 void generateRSAKeys() {
@@ -65,7 +73,7 @@ void generateRSAKeys() {
     printf( " ok\n  . Exporting the public  key in rsa_pub.txt...." );
     fflush( stdout );
     
-    if( ( fpub = fopen( "rsa_pub.txt", "wb+" ) ) == NULL )
+    if( ( fpub = fopen( "/Users/gzc/Work/temp/rsa_pub.txt", "wb+" ) ) == NULL )
     {
         printf( " failed\n  ! could not open rsa_pub.txt for writing\n\n" );
         ret = 1;
@@ -82,7 +90,7 @@ void generateRSAKeys() {
     printf( " ok\n  . Exporting the private key in rsa_priv.txt..." );
     fflush( stdout );
     
-    if( ( fpriv = fopen( "rsa_priv.txt", "wb+" ) ) == NULL )
+    if( ( fpriv = fopen( "/Users/gzc/Work/temp/rsa_priv.txt", "wb+" ) ) == NULL )
     {
         printf( " failed\n  ! could not open rsa_priv.txt for writing\n" );
         ret = 1;
